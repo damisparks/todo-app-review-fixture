@@ -1,0 +1,15 @@
+{
+  "name": "todo-app-review-fixture",
+  "version": "1.0.0",
+  "description": "Small todo app used as a test fixture for the nd7426 Multi-Agent Code Review Orchestrator project",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "license": "MIT"
+}
