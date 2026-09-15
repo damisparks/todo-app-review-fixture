@@ -1,5 +1,6 @@
 import express from 'express';
 import { listTodos, addTodo, toggleTodo, removeTodo } from './todoStore.js';
+import { validateTodoText } from './validation.js';
 
 const app = express();
 app.use(express.json());
@@ -11,8 +12,9 @@ app.get('/todos', (req, res) => {
 
 app.post('/todos', (req, res) => {
   const { text } = req.body;
-  if (!text || typeof text !== 'string' || text.trim() === '') {
-    return res.status(400).json({ error: 'text is required' });
+  const validation = validateTodoText(text);
+  if (!validation.valid) {
+    return res.status(400).json({ error: validation.error });
   }
   res.status(201).json(addTodo(text.trim()));
 });
